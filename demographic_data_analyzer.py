@@ -74,13 +74,10 @@ def calculate_demographic_data(print_data=True):
         .mean()
         .mul(100)
     )
-
+    
     highest_earning_country = country_rich_percentage.idxmax()
-    highest_earning_country_percentage =  (
-        df.assign(rich=df['salary'] == '>50K')
-        .groupby('native-country')['rich']
-        .mean()
-        .mul(100)
+    highest_earning_country_percentage = round(
+        country_rich_percentage.max(), 1
     )
 
     # Identify the most popular occupation for those who earn >50K in India.
